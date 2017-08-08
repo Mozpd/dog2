@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东秒杀</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        section{
+            width: 600px;
+            height: 300px;
+            background-color: rgb(243,243,243);
+            color: rgb(246,241,255);
+            position: absolute;
+            left: calc(50% - 300px);
+            top: calc(50% - 150px);
+
+        }
+        section>div{
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            background-color: rgb(233,69,64);
+
+        }
+        strong{
+            line-height:40px;
+
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        ul li{
+            list-style: none;
+            margin-left: 5px;
+
+
+        }
+        ul li:nth-of-type(2n){
+            background-color: black;
+            padding: 2px;
+        }
+        body >div{
+            width: 100px;
+            height: 100px;
+            background: aqua;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div>
+        <div>
+            <strong>京东秒杀</strong>
+        </div>
+        <div>
+            <ul>
+                <li>距离结束</li>
+                <li>22</li>
+                <li>：</li>
+                <li>12</li>
+                <li>：</li>
+                <li>38</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+</section>
+<div></div>
+</body>
+</html>
+<script>
+    window.onload = function () {
+        var li = document.querySelectorAll('li');
+        var add = setInterval(function() {
+            var sec = li[5].innerHTML;
+            sec = sec -1;
+            li[5].innerHTML = sec;
+            if(sec < 10){
+                li[5].innerHTML = '0' + sec;
+                if(sec < 0){
+                    var min = li[3].innerHTML;
+                    min = min -1;
+                    li[3].innerHTML = min;
+                    sec = 60;
+                    li[5].innerHTML = sec;
+                    if(min < 10){
+                        li[3].innerHTML ='0' + min;
+                        if(min < 0){
+                            var h = li[1].innerHTML;
+                            h = h-1;
+                            li[1].innerHTML = h;
+                            min = 60;
+                            li[3].innerHTML = min;
+                            if(h < 10){
+                                li[1].innerHTML ='0' + h;
+                                if(h < 0){
+                                    li[1].innerHTML = '00'
+                                    li[3].innerHTML = '00';
+                                    li[5].innerHTML = '00';
+                                    clearInterval(add);
+                                    return;
+
+                                }
+                            }
+
+                        }
+                    }
+
+
+                }
+
+            }
+
+
+
+
+
+        },1000)
+
+
+    }
+
+
+
+</script>
